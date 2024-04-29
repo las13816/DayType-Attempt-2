@@ -1,44 +1,49 @@
-// Unit test 
-
 #include <iostream>
-#include "dayType.h"
-
-using namespace std;
+#include "dateType.h"
 
 int main() {
-    // Test default constructor
-    dayType defaultDay;
-    cout << "From default constructor: ";
-    defaultDay.print();
-    cout << endl;
+    // Default constructor
+    std::cout << "Default constructor: ";
+    dateType today;
+    today.print();
+    std::cout << std::endl;
 
-    // Test nextDay() method and output next day 
-    cout << "Next day: " << defaultDay.nextDay() << endl;
+    // Constructor with specified date
+    std::cout << "Constructor: ";
+    dateType specificDate(4, 15, 2024);
+    specificDate.print();
+    std::cout << std::endl;
 
-    // Test prevDay() method and output previous day 
-    cout << "Previous day: " << defaultDay.prevDay() << endl;
+    //Displaying days passed, left, and number of days in the month 
+    std::cout << "Number of days passed: " << specificDate.numberOfDaysPassed() << std::endl;
+    std::cout << "Number of days left: " << specificDate.numberOfDaysLeft() << std::endl;
+    std::cout << "Number of days in month: " << specificDate.getDaysInMonth() << std::endl;
 
-    // Test constructor with parameters
-    dayType customDay("Monday");
-    cout << "From constructor with parameters: ";
-    customDay.print();
-    cout << endl;
+    //Incrementing date
+    specificDate.incrementDate(15);
+    std::cout << "After 15 days, the date will be: ";
+    specificDate.print();
+    std::cout << std::endl;
 
-    // Test addDay() method and add 3 days 
-    customDay.addDay(3);
-    cout << "After adding 3 days: ";
-    customDay.print();
-    cout << endl;
-    // Add 30 days 
-    customDay.addDay(30);
-    cout << "After adding 30 days: ";
-    customDay.print();
-    cout << endl;
-    // Add 365 days 
-    customDay.addDay(365);
-    cout << "After adding 365 days: ";
-    customDay.print();
-    cout << endl;
-    // Return 
+    //Resetting year, month, and day 
+    std::cout << "Resetting year to 2000: ";
+    specificDate.setYear(2000);
+    specificDate.print();
+    std::cout << std::endl;
+
+    std::cout << "Resetting month to 2: ";
+    specificDate.setMonth(2);
+    specificDate.print();
+    std::cout << std::endl;
+
+    std::cout << "Resetting day to 29: ";
+    specificDate.setDay(29);
+    specificDate.print();
+    std::cout << std::endl;
+
+    std::cout << "Date is now set to: ";
+    specificDate.print();
+    std::cout << std::endl;
+
     return 0;
 }
